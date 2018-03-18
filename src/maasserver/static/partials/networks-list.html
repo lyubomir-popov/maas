@@ -175,8 +175,8 @@
                             <a href="#/vlan/{$ row.vlan.id $}">{$ row.vlan_name $}</a>
                         </td>
                         <td aria-label="DHCP">
-                            <p data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null">Enabled</p>
-                            <p data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</p>
+                            <span data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null">Enabled</span>
+                            <span data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</span>
                         </td>
                         <td aria-label="Fabric">
                             <a href="#/fabric/{$ row.fabric.id $}">{$ row.fabric.name $}</a>
@@ -198,8 +198,8 @@
                             <a href="#/vlan/{$ row.vlan.id $}">{$ row.vlan_name $}</a>
                         </td>
                         <td aria-label="DHCP">
-                            <p data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null || row.vlan.external_dhcp === true">Enabled</p>
-                            <p data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</p>
+                            <span data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null || row.vlan.external_dhcp === true">Enabled</span>
+                            <span data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</span>
                         </td>
                         <td>
                             <a href="#/fabric/{$ row.fabric.id $}">{$ row.fabric.name $}</a>
@@ -244,8 +244,8 @@
                             <a href="#/vlan/{$ row.vlan.id $}">{$ row.vlan_name $}</a>
                         </td>
                         <td aria-label="DHCP">
-                            <p data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null || row.vlan.external_dhcp === true">Enabled</p>
-                            <p data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</p>
+                            <span data-ng-if="row.vlan.dhcp_on === true || row.vlan.relay_vlan !== null || row.vlan.external_dhcp === true">Enabled</span>
+                            <span data-ng-if="row.vlan.dhcp_on !== true && row.vlan.relay_vlan === null">Disabled</span>
                         </td>
                         <td aria-label="Subnet">
                             <a href="#/subnet/{$ row.subnet.id $}">{$ row.subnet_name $}</a>
@@ -255,7 +255,7 @@
                         </td>
                         <td aria-label="Space">
                             <a data-ng-if="row.space !== null" href="#/space/{$ row.space.id $}">{$ row.space.name $}</a>
-                            <p data-ng-if="row.space === null">(undefined)</p>
+                            <span data-ng-if="row.space === null">(undefined)</span>
                         </td>
                     </tr>
                 </tbody>
