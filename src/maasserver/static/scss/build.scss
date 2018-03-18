@@ -4,7 +4,6 @@
 
 // Import Vanilla framework
 @import '../../../../vanilla-framework/scss/vanilla';
-// @import '../../../../node_modules/vanilla-framework/scss/vanilla';
 
 @include vanilla;
 
@@ -28,13 +27,13 @@
 @import 'patterns_table-sortable';
 
 // Include local patterns
-// @include maas;
+@include maas;
 // @include maas-tables;
 @include maas-b-links;
 @include maas-icons;
 @include maas-navigation;
 @include maas-page-header;
-// @include maas-tabs;
+@include maas-tabs;
 @include maas-switch;
 // @include maas-table-expanding;
 @include maas-cards;
@@ -45,4 +44,3 @@
 @include maas-p-notifications;
 @include maas-p-sticky-footer;
 @include maas-table-sortable;
-
