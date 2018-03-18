@@ -3,7 +3,7 @@
   // Issue: https://github.com/ubuntudesign/MAAS-design-squad/issues/98
   .p-sticky-header {
     background-color: $color-x-light;
-    border-bottom: 1px solid $color-mid-light;
+    // border-bottom: 1px solid $color-mid-light;
   }
 
   // XXX Footer link fix
@@ -16,9 +16,9 @@
     }
   }
 
-  body {
-    background-color: $color-light;
-  }
+  // body {
+  //   background-color: $color-light;
+  // }
 
   maas-obj-field[type="text"],
   maas-obj-field[type="password"] {
@@ -30,7 +30,7 @@
   }
 
   textarea {
-    min-height: 175px;
+    min-height: 11rem;
   }
 
   .p-table-expanding__panel {
@@ -55,12 +55,12 @@
     td {
       display: table-cell !important;
       flex-basis: auto !important;
-      flex-grow: 0;
-      margin-left: 3.2877% !important;
+      // flex-grow: 0;
+      // margin-left: 3.2877% !important;
 
-      &:first-child {
-        margin-left: 0 !important;
-      }
+      // &:first-child {
+      //   margin-left: 0 !important;
+      // }
     }
 
     tr.is-active {
@@ -88,27 +88,9 @@
     width: 100% !important;
   }
 
-  .row ~ .row,
-  * + * {
-    margin-top: $sp-large;
-  }
-
-  th, td {
-    padding: .5rem 0;
-  }
-
   dl dt:first-of-type {
     margin-top: 0;
     padding-top: 0;
-  }
-
-  .p-navigation--sidebar {
-    background: $color-x-light;
-
-    .sidebar__content {
-      top: 0;
-      padding: 1rem;
-    }
   }
 
   .u-float--none {
@@ -117,12 +99,6 @@
 
   .u-remove-max-width {
     max-width: none;
-  }
-
-  // XXX Ant: 25.01.18 Can be removed when this issue is resolved
-  // https://github.com/vanilla-framework/vanilla-framework/issues/1542
-  .p-navigation--sidebar .sidebar__content {
-    position: relative;
   }
 
   .p-contextual-menu__dropdown {
@@ -137,7 +113,6 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    padding-right: 2.3rem;
   }
 
   maas-obj-field[type="password"] {
@@ -151,7 +126,7 @@
   }
 
   .editable {
-    padding: .5rem 1rem;
+    // padding: .5rem 1rem;
     border: 1px solid transparent;
 
     &:hover,
@@ -163,8 +138,8 @@
   .page-header__title-domain {
     display: inline-block;
     width: auto;
-    font-size: 2.25rem;
-    line-height: 1.167;
+    // font-size: 2.25rem;
+    // line-height: 1.167;
   }
 
   //Fix for action buttons in headers
