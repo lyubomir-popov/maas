@@ -20,16 +20,14 @@
 
 {% block content %}
 <div id="prefs" class="accounts">
-    <section id="keys">
-        <div class="p-strip is-bordered">
+    <div class="p-strip">
+        <section id="keys">
             <div class="row">
-                <div class="col-8">
-                    <h2>Keys</h2>
+                <div class="col-3">
+                    <h2 class="p-heading--four">Keys</h2>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-8">
-                    <h3>MAAS keys</h3>
+                <div class="col-9">
+                    <h3 class="p-heading--four">MAAS keys</h3>
                     <div id="api">
                         <p>You'll need a separate API key for each Juju environment.</p>
                         <ul class="p-list">
@@ -48,20 +46,18 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="p-strip is-bordered">
             <div class="row">
-                <div id="ssh-keys" class="col-8" data-ng-controller="PreferencesController">
-                    <h3>SSH keys</h3>
+                <div id="ssh-keys" class="col-9 push-3" data-ng-controller="PreferencesController">
+                    <hr>
+                    <h3 class="p-heading--four">SSH keys</h3>
                     <span class="u-text--loading" data-ng-if="loading"><i class="p-icon--spinner p-icon--spinner"></i> Loading...</span>
+                    <maas-ssh-keys data-ng-if="!loading"></maas-ssh-keys>
                 </div>
             </div>
-            <maas-ssh-keys data-ng-if="!loading"></maas-ssh-keys>
-        </div>
-        <div class="p-strip is-bordered">
             <div class="row">
-                <div class="col-8" id="ssl-keys">
-                    <h3>SSL keys</h3>
+                <div class="col-9 push-3" id="ssl-keys">
+                    <hr>
+                    <h3 class="p-heading--four">SSL keys</h3>
                     <ul class="p-list">
                         {% for key in user.sslkey_set.all %}
                         <li class="u-equal-height js-bundle row">
@@ -75,41 +71,44 @@
                         {% empty %} No SSL key configured. {% endfor %}
                     </ul>
                     <div>
-                        <a href="{% url 'prefs-add-sslkey' %}" id="add_ssl_key" class="p-button--neutral u-float--right">Add SSL key</a>
+                        <a href="{% url 'prefs-add-sslkey' %}" id="add_ssl_key" class="p-button--neutral u-float- -right">Add SSL key</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="profile" class="p-strip is-bordered">
-        <div class="row">
-            <div class="col-8">
-                <h2>User details</h2>
-                <form method="post" action="{% url 'prefs' %}">{% csrf_token %}
-                    <ul class="p-list">
-                        {% for field in profile_form %} {% include "maasserver/form_field.html" %} {% endfor %}
-                    </ul>
-                    <input type="hidden" name="profile_submit" value="1" />
-                    <button type="submit" class="p-button--positive u-float--right">Save details</button>
-                </form>
+        </section>
+        <section id="profile">
+            <div class="row is-bordered">
+                <div class="col-3">
+                    <h2 class="p-heading--four">User details</h2>
+                </div>
+                <div class="col-9">
+                    <form method="post" action="{% url 'prefs' %}">{% csrf_token %}
+                        <ul class="p-list">
+                            {% for field in profile_form %} {% include "maasserver/form_field.html" %} {% endfor %}
+                        </ul>
+                        <input type="hidden" name="profile_submit" value="1" />
+                        <button type="submit" class="p-button--positive u-float- -right">Save details</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="password" class="p-strip">
-        <div class="row">
-            <div class="col-8">
-                <h2>Password</h2>
-                <form method="post" action="{% url 'prefs' %}">{% csrf_token %}
-                    <ul class="p-list">
-                        {% for field in password_form %} {% include "maasserver/form_field.html" %} {% endfor %}
-                    </ul>
-                    <input type="hidden" name="password_submit" value="1" />
-                    <button type="submit" class="p-button--positive u-float--right">Save password</button>
-                </form>
+        <section id="password">
+            <div class="row is-bordered">
+                <div class="col-3">
+                    <h2 class="p-heading--four">Password</h2>
+                </div>
+                <div class="col-9">
+                    <form method="post" action="{% url 'prefs' %}">{% csrf_token %}
+                        <ul class="p-list">
+                            {% for field in password_form %} {% include "maasserver/form_field.html" %} {% endfor %}
+                        </ul>
+                        <input type="hidden" name="password_submit" value="1" />
+                        <button type="submit" class="p-button--positive u-float- -right">Save password</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>
 {% endblock %}
