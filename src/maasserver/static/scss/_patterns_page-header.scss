@@ -1,13 +1,13 @@
 @mixin maas-page-header {
   .page-header {
-    padding: 1.5rem 0;
     position: sticky;
     top: 0;
     z-index: 5;
 
     &__title {
-      @include vf-heading-2;
+      @include vf-heading-3;
       display: inline-block;
+      margin-bottom: .6rem; //$sp-unit + $nudge-compensation;
     }
 
     &__status {
@@ -25,6 +25,10 @@
       [class^="p-icon"] {
         margin-bottom: 0.1rem;
       }
+    }
+    
+    button {
+      margin-bottom: .5rem !important; // !important because of the reset
     }
 
     &__controls {
