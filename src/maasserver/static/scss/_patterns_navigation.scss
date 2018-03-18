@@ -35,10 +35,10 @@
       &--right {
         @extend .p-navigation__links;
 
-        @media (min-width: $breakpoint-navigation-threshold) {
-          position: absolute;
-          right: 0;
-        }
+        // @media (min-width: $breakpoint-navigation-threshold) {
+        //   position: absolute;
+        //   right: 0;
+        // }
       }
 
       .p-navigation__link {
