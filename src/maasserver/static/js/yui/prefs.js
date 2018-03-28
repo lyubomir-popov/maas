@@ -43,7 +43,7 @@ Y.extend(TokenWidget, Y.Widget, {
             .set('href', '#')
             .set('id','create_token')
             .addClass('p-button--neutral')
-            .addClass('u-float--right')
+            .addClass('u-float- -right')
             .set('text', "Generate MAAS key");
         this.status_node = Y.Node.create('<div />')
             .set('id','create_error');

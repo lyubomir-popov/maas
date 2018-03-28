@@ -1,6 +1,8 @@
 @mixin maas-tabs {
   .p-tabs {
-    margin-bottom: 0;
+    .page-header & {
+      margin-bottom: 0;
+    }
 
     &__list {
       @extend .row;
@@ -11,7 +13,7 @@
       padding-left: $grid-margin-width;
       padding-right: $grid-margin-width;
 
-      &::after {
+      .page-header &::after {
         bottom: unset;
         left: $grid-margin-width;
         right: $grid-margin-width;
