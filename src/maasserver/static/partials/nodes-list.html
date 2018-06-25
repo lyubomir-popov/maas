@@ -729,20 +729,22 @@ sudo maas-rack register --url {$ tabs.controllers.registerUrl $} --secret {$ tab
         </div>
     </div>
     <nav class="p-tabs" data-ng-if="currentpage === 'machines' || currentpage === 'pools'">
-        <ul class="p-tabs__list" role="tablist">
-            <li class="p-tabs__item" role="presentation">
-                <a href="#/machines" class="p-tabs__link" role="tab"
-                    data-ng-class="{ 'is-active': currentpage === 'machines'}">
-                    <ng-pluralize count="machines.length" when="{'one': '{$ machines.length $} Machine', 'other': '{$ machines.length $} Machines'}"></ng-pluralize>
-                </a>
-            </li>
-            <li class="p-tabs__item" role="presentation">
-                <a href="#/pools" class="p-tabs__link" role="tab"
-                    data-ng-class="{ 'is-active': currentpage === 'pools'}">
-                    <ng-pluralize count="pools.length" when="{'one': '{$ pools.length $} Resource pool', 'other': '{$ pools.length $} Resource pools'}"></ng-pluralize>
-                </a>
-            </li>
-        </ul>
+        <div class="row">
+            <ul class="p-tabs__list" role="tablist">
+                <li class="p-tabs__item" role="presentation">
+                    <a href="#/machines" class="p-tabs__link" role="tab"
+                        data-ng-class="{ 'is-active': currentpage === 'machines'}">
+                        <ng-pluralize count="machines.length" when="{'one': '{$ machines.length $} Machine', 'other': '{$ machines.length $} Machines'}"></ng-pluralize>
+                    </a>
+                </li>
+                <li class="p-tabs__item" role="presentation">
+                    <a href="#/pools" class="p-tabs__link" role="tab"
+                        data-ng-class="{ 'is-active': currentpage === 'pools'}">
+                        <ng-pluralize count="pools.length" when="{'one': '{$ pools.length $} Resource pool', 'other': '{$ pools.length $} Resource pools'}"></ng-pluralize>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>
 
