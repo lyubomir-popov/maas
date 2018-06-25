@@ -1,0 +1,5 @@
+@mixin maas-p-buttons {
+  .p-button--min-margin-bottom  {
+    margin-bottom: $spv-nudge-compensation;
+  }
+}
