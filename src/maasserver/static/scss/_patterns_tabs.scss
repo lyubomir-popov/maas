@@ -1,5 +1,12 @@
 @mixin maas-tabs {
   .p-tabs {
+    &__list {
+      margin-bottom: 0;
+      &::after {
+        top: 0;
+      }
+    }
+
     &__link {
       &.is-active {
         @extend .p-tabs__link[aria-selected="true"];
