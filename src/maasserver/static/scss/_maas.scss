@@ -108,11 +108,6 @@
     width: 100% !important;
   }
 
-  .row ~ .row,
-  * + * {
-    margin-top: $sp-large;
-  }
-
   th, td {
     padding: .5rem 0;
   }
