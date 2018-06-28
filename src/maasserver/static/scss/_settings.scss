@@ -1,4 +1,4 @@
-$grid-max-width: 1440px;
+$grid-max-width: 1440 / 16 * 1rem; // express in rems for easier calculations
 
 $color-navigation-background: #000;
 
