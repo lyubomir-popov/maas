@@ -22,6 +22,7 @@
 @import 'patterns_strips';
 @import 'patterns_tag-input';
 @import 'patterns_forms';
+@import 'patterns_hr';
 @import 'patterns_notification';
 @import 'patterns_footer';
 @import 'patterns_table-sortable';
@@ -44,12 +45,12 @@
 @include maas-tag-input;
 @include maas-p-buttons;
 @include maas-p-forms;
+@include maas-p-hr;
 @include maas-p-notifications;
 @include maas-p-sticky-footer;
 @include maas-table-sortable;
 @include maas-table-columns(100);
 @include maas-table-widths;
-
 
 // the version in node_modules doesn't contain the latest styles for the grid (??)
   $baseline-color: #f00 !default;
