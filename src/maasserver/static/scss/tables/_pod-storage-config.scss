@@ -1,0 +1,38 @@
+@mixin maas-table--pod-storage-config {
+  .p-table--pod-storage-config {
+    input {
+      // overriding min-width to make inputs fit within container
+      min-width: auto;
+      @extend %u-input-min-margin--bottom;
+    }
+
+    @media (min-width: $breakpoint-small) {
+      margin-bottom: 0;
+
+      .p-table__row {
+        th,
+        td {
+          &:nth-child(1) {
+            width: $icon-button-width;
+          }
+
+          &:nth-child(2) {
+            width: 10%;
+          }
+
+          &:nth-child(3) {
+            width: 40%;
+          }
+
+          &:nth-child(4) {
+            width: 40%;
+          }
+
+          &:nth-child(5) {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+}

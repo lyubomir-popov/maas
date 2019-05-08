@@ -15,6 +15,19 @@
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate%281 1%29' fill='none' fill-rule='evenodd'%3E%3Ccircle stroke='#{vf-url-friendly-color($bg-color)}' stroke-width='1.5' fill='#{vf-url-friendly-color($bg-color)}' cx='7.25' cy='7.25' r='7.25'/%3E%3Cpath fill='#{vf-url-friendly-color($tick-color)}' d='M11.05 4.173l-.066.058L6.25 8.378l-2.776-2.38-.839.948L6.25 10.75l5.5-5.787-.7-.79z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
+@mixin vf-icon-contextual-menu--horizontal($color) {
+  background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 53 (72520) - https://sketchapp.com --%3E%3Ctitle%3Econtextual-menu-icon%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='contextual-menu-icon' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M1.5,9 C0.671572875,9 0,8.32842712 0,7.5 C0,6.67157288 0.671572875,6 1.5,6 C2.32842712,6 3,6.67157288 3,7.5 C3,8.32842712 2.32842712,9 1.5,9 Z M7.5,9 C6.67157288,9 6,8.32842712 6,7.5 C6,6.67157288 6.67157288,6 7.5,6 C8.32842712,6 9,6.67157288 9,7.5 C9,8.32842712 8.32842712,9 7.5,9 Z M13.5,9 C12.6715729,9 12,8.32842712 12,7.5 C12,6.67157288 12.6715729,6 13.5,6 C14.3284271,6 15,6.67157288 15,7.5 C15,8.32842712 14.3284271,9 13.5,9 Z' fill='#{vf-url-friendly-color($color)}' fill-rule='nonzero'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+}
+
+//XXX: Lyubomir Popov 10.05.19 vanilla 2.0 chevron. Can be removed once vanilla is updated to the 2.0 release
+@mixin vf-icon-chevron($color: $color-mid-dark) {
+  background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='chevron_down' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpolygon id='chevron' fill='#{vf-url-friendly-color($color)}' transform='translate(8.000000, 8.193853) rotate(90.000000) translate(-8.000000, -8.193853) ' points='4.80614657 14.3333333 8.64539007 8.17730496 4.80614657 2.05437352 6.16312057 1.19385343 11.1938534 8.17730496 6.16312057 15.1938534'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
+}
+
+@mixin vf-icon-chevron--new($color: $color-mid-dark)  {
+  background-image: url("data:image/svg+xml, %3Csvg width='16px' height='16px' viewBox='0 0 16 16' version='1.1' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='chevron_down' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpolygon id='chevron' fill='#{vf-url-friendly-color($color)}' transform='translate(8.000000, 8.193853) rotate(90.000000) translate(-8.000000, -8.193853) ' points='4.80614657 14.3333333 8.64539007 8.17730496 4.80614657 2.05437352 6.16312057 1.19385343 11.1938534 8.17730496 6.16312057 15.1938534'%3E%3C/polygon%3E%3C/g%3E%3C/svg%3E");
+}
+
 @mixin maas-icons {
   .p-icon {
     padding-right: $sp-small;
@@ -307,6 +320,23 @@
 
     display: block;
     position: relative;
+  }
+
+  .p-icon--contextual-menu--horizontal {
+    @include vf-icon-chevron--new;
+
+    background-repeat: no-repeat;
+    background-position: 0 60%;
+    flex: 0 0 auto;
+    height: map-get($line-heights, default-text);
+    overflow: hidden;
+    padding: $spv-intra $sph-intra--condensed;
+    width: map-get($icon-sizes, default);
+    z-index: 1;
+
+    * & {
+      margin-left: 0;
+    }
   }
 
   // XXX Use ems rather than rems for icon sizing

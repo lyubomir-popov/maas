@@ -1,4 +1,9 @@
 //does not work with colors containing alpha
+@import "utilities_hide";
+@import "utilities_breakpoints";
+
+@include maas-util-hide;
+
 @function encodecolor($string) {
   @if type-of($string) == "color" {
     $hex: str-slice(ie-hex-str($string), 4);

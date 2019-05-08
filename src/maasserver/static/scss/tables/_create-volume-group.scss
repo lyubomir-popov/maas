@@ -1,0 +1,21 @@
+@mixin maas-table--create-volume-group {
+  .p-table--create-volume-group {
+    &__name {
+      @media (max-width: $breakpoint-medium) {
+        width: 50%;
+      }
+      @media (min-width: $breakpoint-medium) {
+        width: 30%;
+      }
+    }
+    &__size {
+      width: 30%;
+    }
+    &__type {
+      width: 20%;
+    }
+    &__empty {
+      width: 10%;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@mixin maas-table--controller-interfaces {
+  .p-table--controller-interfaces {
+    .p-table--is-device {
+      th,
+      td {
+        &:nth-child(1) {
+          width: 30%;
+        }
+        &:nth-child(2) {
+          width: 25%;
+        }
+        &:nth-child(3) {
+          width: 25%;
+        }
+        &:nth-child(4) {
+          width: 15%;
+        }
+      }
+    }
+
+    .p-table--is-not-device {
+      th,
+      td {
+        &:nth-child(1) {
+          width: 20%;
+        }
+        &:nth-child(2) {
+          width: 6%;
+        }
+        &:nth-child(3) {
+          width: 10%;
+        }
+        &:nth-child(4) {
+          width: 14%;
+        }
+        &:nth-child(5) {
+          width: 16%;
+        }
+        &:nth-child(6) {
+          width: 28%;
+        }
+        &:nth-child(7) {
+          width: 6%;
+        }
+      }
+    }
+  }
+}

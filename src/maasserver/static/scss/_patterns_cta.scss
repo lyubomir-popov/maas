@@ -19,13 +19,13 @@
 
     &::after {
       @extend %p-cta-icon;
-      @include vf-icon-chevron($color-mid-dark);
+      @include vf-icon-chevron--new($color-mid-dark);
       right: $sph-intra;
       top: ($spv-nudge - $px) * 2;
     }
 
     &.p-button--positive::after {
-      @include vf-icon-chevron($color-x-light);
+      @include vf-icon-chevron--new($color-x-light);
     }
 
     &.is-selected::after {

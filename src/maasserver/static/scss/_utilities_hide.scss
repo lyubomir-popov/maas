@@ -1,0 +1,25 @@
+@mixin maas-util-hide {
+  .u-hide--br1 {
+    @media (max-width: $breakpoint-first - 1px) {
+      display: none !important;
+    }
+  }
+
+  .u-hide--br2 {
+    @media (max-width: $breakpoint-second - 1px) {
+      display: none !important;
+    }
+  }
+
+  .u-hide--br3 {
+    @media (max-width: $breakpoint-third - 1px) {
+      display: none !important;
+    }
+  }
+
+  .u-hide--br4 {
+    @media (max-width: $breakpoint-fourth - 1px) {
+      display: none !important;
+    }
+  }
+}

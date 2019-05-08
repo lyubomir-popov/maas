@@ -1,19 +1,21 @@
 <table class="p-table--sortable p-table--machines" role="grid">
     <thead>
         <tr class="p-table__header p-table__row">
-            <th class="p-table__col--name p-double-row u-align--left">
-                <div class="p-double-row__checkbox" data-ng-if="!hideActions">
-                    <input class="checkbox" type="checkbox" data-ng-click="toggleCheckAll()" data-ng-checked="table.allViewableChecked" id="check-all" data-ng-disabled="ngDisabled()" />
-                    <label class="p-checkbox--action" for="check-all" ng-class="getAllCheckboxClass(table.filteredMachines)"></label>
-                </div>
-                <div class="p-double-row__rows-container--checkbox">
-                    <div>
-                        <span role="columnheader" data-ng-click="selectColumnOrSort('fqdn')" data-ng-class="{'is-active': table.column === 'fqdn', 'is-sorted': table.predicate === 'fqdn', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="FQDN">FQDN</span>
-                        |
-                        <span role="columnheader" data-ng-click="selectColumnOrSort('pxe_mac')" data-ng-class="{'is-active': table.column === 'pxe_mac', 'is-sorted': table.predicate === 'pxe_mac', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="MAC">MAC</span>
+            <th class="p-table__col--name p-double-row">
+                <div class="p-double-row__wrapper">
+                    <div class="p-double-row__checkbox" data-ng-if="!hideActions">
+                        <input class="checkbox" type="checkbox" data-ng-click="toggleCheckAll()" data-ng-checked="table.allViewableChecked" id="check-all" data-ng-disabled="ngDisabled()" />
+                        <label class="p-checkbox--action" for="check-all" ng-class="getAllCheckboxClass(table.filteredMachines)"></label>
                     </div>
-                    <div>
-                        <span role="columnheader" data-ng-click="sortTable('ip_addresses[0]')" data-ng-class="{'is-active': table.column === 'ip_addresses[0]', 'is-sorted': table.predicate === 'ip_addresses[0]', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="IP">IP</span>
+                    <div class="p-double-row__rows-container--checkbox">
+                        <div class="p-double-row__main-row">
+                            <span role="columnheader" data-ng-click="selectColumnOrSort('fqdn')" data-ng-class="{'is-active': table.column === 'fqdn', 'is-sorted': table.predicate === 'fqdn', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="FQDN">FQDN</span>
+                            |
+                            <span role="columnheader" data-ng-click="selectColumnOrSort('pxe_mac')" data-ng-class="{'is-active': table.column === 'pxe_mac', 'is-sorted': table.predicate === 'pxe_mac', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="MAC">MAC</span>
+                        </div>
+                        <div class="p-double-row__muted-header">
+                            <span role="columnheader" data-ng-click="sortTable('ip_addresses[0]')" data-ng-class="{'is-active': table.column === 'ip_addresses[0]', 'is-sorted': table.predicate === 'ip_addresses[0]', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="IP">IP</span>
+                        </div>
                     </div>
                 </div>
             </th>
@@ -21,11 +23,13 @@
                 <span class="u-hide--br3"><i class="p-icon--placeholder"></i>Power</span>
             </th>
             <th class="p-table__col--status p-double-row" title="Status">
-                <div class="p-double-row__icon-container">
-                    <i class="p-icon--placeholder"></i>
-                </div>
-                <div class="p-double-row__rows-container--icon">
-                    <span role="columnheader" data-ng-click="sortTable('status')" data-ng-class="{'is-sorted': table.predicate === 'status', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="Status">Status</span>
+                <div class="p-double-row__wrapper">
+                    <div class="p-double-row__icon-container">
+                        <i class="p-icon--placeholder"></i>
+                    </div>
+                    <div class="p-double-row__rows-container--icon">
+                        <span role="columnheader" data-ng-click="sortTable('status')" data-ng-class="{'is-sorted': table.predicate === 'status', 'sort-asc': table.reverse === false, 'sort-desc': table.reverse === true}" title="Status">Status</span>
+                    </div>
                 </div>
             </th>
             <th class="p-table__col--owner p-double-row" title="Owner, Tags">
@@ -65,7 +69,7 @@
                 'p-table__placeholder': group.label === 'none'
             }"
         >
-            <th class="p-table__group-label p-table__col--name p-double-row u-align--left">
+            <th class="p-table__group-label p-table__col--name p-double-row">
                 <input type="checkbox" id="{$ group.label $}" data-ng-click="toggleCheckGroup(group.label)" data-ng-checked="getGroupSelectedState(group.label)" />
                 <label class="p-checkbox--action u-no-margin--bottom" for="{$ group.label $}">{$ group.label $}</label>
                 <div class="p-muted-text">{$ getGroupCountString(group.label) $}</div>
@@ -98,31 +102,34 @@
                              'is-grouped': group.label !== 'none'
                             }">
             <td class="p-table__col--name p-double-row" aria-label="FQDN" data-ng-if="table.column === 'fqdn' || table.column === 'ip_address'">
-                <div class="p-double-row__checkbox" data-ng-if="!hideActions">
-                    <input type="checkbox" data-ng-click="toggleChecked(node)" data-ng-checked="node.$selected" id="{$ node.fqdn $}" data-ng-disabled="ngDisable()" />
-                    <label class="p-checkbox--action" for="{$ node.fqdn $}" ng-class="getCheckboxClass(node)"></label>
-                </div>
-                <div class="p-double-row__rows-container--checkbox">
-                    <div class="p-double-row__main-row">
-                        <a class="p-domain-name" href="#/{$ node.link_type $}/{$ node.system_id $}" title="{$ node.fqdn $}">
-                            <span data-ng-if="node.locked" title="This machine is locked. You have to unlock it to perform any actions." aria-describedby="{$ node.fqdn $}-locked-state">
-                                <i class="p-icon--locked">Locked: </i>
-                            </span>
-                            <span class="p-domain-name__host">{$ node.hostname $}</span><span class="p-domain-name__tld">.{$ node.domain.name $}</span>
-                        </a>
+                <div class="p-double-row__wrapper">
+                    <div class="p-double-row__checkbox" data-ng-if="!hideActions">
+                        <input type="checkbox" data-ng-click="toggleChecked(node)" data-ng-checked="node.$selected" id="{$ node.fqdn $}" data-ng-disabled="ngDisable()" />
+                        <label class="p-checkbox--action" for="{$ node.fqdn $}" ng-class="getCheckboxClass(node)"></label>
                     </div>
-                    <span class="p-tooltip p-tooltip--bottom-left" aria-describedby="ip-addresses-{$ node.fqdn $}">
-                        <div data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length" class="p-double-row__muted-row">
-                            <span>{$ getBootIp(node.ip_addresses) || node.ip_addresses[0].ip $}</span><span data-ng-if="getBootIp(node.ip_addresses)"> (PXE)</span>
-                            <span data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length > 1">(+{$ removeDuplicates(node.ip_addresses, 'ip').length - 1 $})</span>
-                            <span class="p-tooltip__message" style="white-space:initial" role="tooltip" data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length > 1" id="ip-addresses-{$ node.fqdn $}">
-                                <div><strong>{$ removeDuplicates(node.ip_addresses, 'ip').length $} interfaces:</strong></div>
-                                <div data-ng-repeat="ip_address in removeDuplicates(node.ip_addresses, 'ip')">
-                                    <span>{$ ip_address.ip $}</span><span data-ng-if="ip_address.is_boot"> (PXE)</span>
-                                </div>
-                            </span>
+                    <div class="p-double-row__rows-container--checkbox">
+                        <div class="p-double-row__main-row">
+                            <a class="p-domain-name" href="#/{$ node.link_type $}/{$ node.system_id $}" title="{$ node.fqdn $}">
+                                <span data-ng-if="node.locked" title="This machine is locked. You have to unlock it to perform any actions." aria-describedby="{$ node.fqdn $}-locked-state">
+                                    <i class="p-icon--locked">Locked: </i>
+                                </span>
+                                <span class="p-domain-name__host">{$ node.hostname $}</span><span class="p-domain-name__tld">.{$ node.domain.name $}</span>
+                            </a>
                         </div>
-                    </span>
+                        <span class="p-tooltip p-tooltip--bottom-left" aria-describedby="ip-addresses-{$ node.fqdn $}">
+                            <div data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length" class="p-double-row__muted-row">
+                                <span class="p-double-row__muted-row-text--ip">{$ getBootIp(node.ip_addresses) || node.ip_addresses[0].ip $}</span>
+                                <span class="p-double-row__muted-row-text" data-ng-if="getBootIp(node.ip_addresses)"> (PXE)</span>
+                                <span class="p-double-row__muted-row-text--ip-count" data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length > 1">(+{$ removeDuplicates(node.ip_addresses, 'ip').length - 1 $})</span>
+                                <span class="p-tooltip__message" style="white-space:initial" role="tooltip" data-ng-if="removeDuplicates(node.ip_addresses, 'ip').length > 1" id="ip-addresses-{$ node.fqdn $}">
+                                    <div><strong>{$ removeDuplicates(node.ip_addresses, 'ip').length $} interfaces:</strong></div>
+                                    <div data-ng-repeat="ip_address in removeDuplicates(node.ip_addresses, 'ip')">
+                                        <span>{$ ip_address.ip $}</span><span data-ng-if="ip_address.is_boot"> (PXE)</span>
+                                    </div>
+                                </span>
+                            </div>
+                        </span>
+                    </div>
                 </div>
             </td>
             <td class="p-table__col--name" aria-label="MAC" data-ng-if="table.column === 'pxe_mac'">
@@ -134,7 +141,7 @@
                 <a href="#/{$ node.link_type $}/{$ node.system_id $}" class="extra-macs" data-ng-show="node.extra_macs.length">(+{$ node.extra_macs.length $})</a>
             </td>
             <td class="p-table__col--power p-double-row" aria-label="Power state">
-                <span class="p-table-menu">
+                <span class="p-table-menu" data-ng-class="{'has-actions': !hideActions}">
                     <div data-ng-click="!hideActions && toggleMenu(node.system_id + '-power')" class="p-double-row__icon-container">
                         <i
                             title="{$ node.power_state $}"
@@ -150,39 +157,39 @@
                     </div>
                     <div class="p-double-row__rows-container--icon u-hide--br3">
                         <div class="p-double-row__main-row u-upper-case--first">
-                            <div title="{$ node.power_state $}">{$ node.power_state $}</div>
+                            <span title="{$ node.power_state $}">{$ node.power_state $}</span>
                         </div>
+                        <button class="p-table-menu__toggle p-icon--contextual-menu--horizontal u-hide--br3" data-ng-click="toggleMenu(node.system_id + '-power')" data-ng-if="!hideActions"></button>
                         <div class="p-double-row__muted-row u-upper-case--first">
                             <span title="{$ node.power_type $}">{$ node.power_type $}</span>
                         </div>
                     </div>
-                    <button class="p-table-menu__toggle p-icon--contextual-menu u-hide--br3" data-ng-click="toggleMenu(node.system_id + '-power')" data-ng-if="!hideActions"></button>
-                    <span class="p-table-menu__dropdown" data-ng-show="openMenu === node.system_id + '-power'" data-ng-if="!node.powerTransition">
-                        <div class="p-table-menu__title--icon">Take action:</div>
+                    <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-power'" data-ng-if="!node.powerTransition">
+                        <div class="p-table-menu__title">Take action:</div>
                         <button
-                            class="p-table-menu__power-on"
+                            class="p-table-menu__link p-table-menu__power-on"
                             data-ng-click="changePowerState(node, 'on')"
                             data-ng-if="node.actions.indexOf('on') !== -1 && node.power_state !== 'on'"
                         >
                             Turn on
                         </button>
                         <button
-                            class="p-table-menu__power-off"
+                            class="p-table-menu__link p-table-menu__power-off"
                             data-ng-click="changePowerState(node, 'off')"
                             data-ng-if="node.actions.indexOf('off') !== -1 && node.power_state !== 'off'"
                         >
                             Turn off
                         </button>
                         <button
+                            class="p-table-menu__link p-table-menu__check-power"
                             data-ng-click="changePowerState(node, 'check')"
-                            class="p-table-menu__check-power"
                             data-ng-if="node.power_state !== 'unknown'"
                         >
                             Check power
                         </button>
                         <button
+                            class="p-table-menu__link p-table-menu__check-power"
                             data-ng-if="node.actions.indexOf('on') === -1 && node.actions.indexOf('off') === -1 && node.power_state === 'unknown'"
-                            class="p-table-menu__check-power"
                             disabled
                         >
                             No power actions available
@@ -191,7 +198,7 @@
                 </span>
             </td>
             <td class="p-table__col--status p-double-row" aria-label="Status, Events">
-                <span class="p-table-menu">
+                <span class="p-table-menu" data-ng-class="{'has-actions': !hideActions}">
                     <div class="p-double-row__icon-container" data-ng-click="!hideActions && toggleMenu(node.system_id + '-status')">
                         <i data-ng-if="showSpinner(node)" class="p-icon--spinner u-animation--spin"></i>
                         <i data-ng-if="showNodeStatus(node)" data-maas-script-status="script-status" data-script-status="node.other_test_status" aria-label="{$ node.other_test_status_tooltip $}"></i>
@@ -205,6 +212,7 @@
                         <div class="p-double-row__main-row" aria-label="Status" title="{$ getStatusText(node) $}">
                             <span>{$ getStatusText(node) $}</span>
                         </div>
+                        <button class="p-table-menu__toggle p-icon--contextual-menu--horizontal u-hide--br3" data-ng-click="toggleMenu(node.system_id + '-status')" data-ng-if="!hideActions"></button>
                         <div class="p-double-row__muted-row">
                             <span class="p-tooltip p-tooltip--btm" aria-describedby="status-message-tooltip-{$ node.fqdn $}">
                                 {$ getStatusMessage(node) $}
@@ -212,8 +220,7 @@
                             </span>
                         </div>
                     </div>
-                    <button class="p-table-menu__toggle p-icon--contextual-menu u-hide--br3" data-ng-click="toggleMenu(node.system_id + '-status')" data-ng-if="!hideActions"></button>
-                    <span class="p-table-menu__dropdown" data-ng-show="openMenu === node.system_id + '-status'">
+                    <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-status'">
                         <div class="p-table-menu__title">Take action:</div>
                         <div class="p-contextual-menu__group" data-ng-if="getStatusActions(node).length">
                             <button
@@ -242,91 +249,96 @@
                 </span>
             </td>
             <td class="p-table__col--owner p-double-row" aria-label="Owner, Tags" title="{$ node.owner $}">
-                <div class="p-table-menu">
+                <div class="p-table-menu" data-ng-class="{'has-actions': !hideActions}">
                     <div class="p-double-row__rows-container">
                         <div class="p-double-row__main-row" aria-label="Owner">
                             <i class="p-icon--spinner u-animation--spin" data-ng-if="node['acquire-transition'] || node['release-transition']">Changing owner</i>
                             <span data-ng-if="node.owner">{$ node.owner $}</span>
                             <span data-ng-if="!node.owner">-</span>
                         </div>
+                        <button class="p-table-menu__toggle p-icon--contextual-menu--horizontal u-hide--br2" data-ng-click="toggleMenu(node.system_id + '-owner')" data-ng-if="!hideActions"></button>
                         <div data-ng-if="node.tags.length !== 0" class="p-double-row__muted-row" aria-label="Tags" title="{$ node.tags.join(', ') $}">
                             <span>{$ node.tags.join(', ') $}</span>
                         </div>
+                        <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-owner'">
+                            <div class="p-table-menu__title">Take action:</div>
+                            <button
+                                data-ng-if="node.actions.indexOf('acquire') !== -1"
+                                data-ng-click="performAction(node, 'acquire')"
+                                class="p-table-menu__link"
+                            >
+                                {$ getActionTitle('acquire') $}
+                            </button>
+                            <button
+                                data-ng-if="node.actions.indexOf('release') !== -1"
+                                data-ng-click="performAction(node, 'release')"
+                                class="p-table-menu__link"
+                            >
+                                {$ getActionTitle('release') $}
+                            </button>
+                            <button
+                                data-ng-if="node.actions.indexOf('acquire') === -1 && node.actions.indexOf('release') === -1"
+                                class="p-table-menu__link"
+                                disabled
+                            >
+                                No owner actions available
+                            </button>
+                        </span>
                     </div>
-                    <button class="p-table-menu__toggle p-icon--contextual-menu u-hide--br2" data-ng-click="toggleMenu(node.system_id + '-owner')" data-ng-if="!hideActions"></button>
-                    <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-owner'">
-                        <div class="p-table-menu__title">Take action:</div>
-                        <button
-                            data-ng-if="node.actions.indexOf('acquire') !== -1"
-                            data-ng-click="performAction(node, 'acquire')"
-                            class="p-table-menu__link"
-                        >
-                            {$ getActionTitle('acquire') $}
-                        </button>
-                        <button
-                            data-ng-if="node.actions.indexOf('release') !== -1"
-                            data-ng-click="performAction(node, 'release')"
-                            class="p-table-menu__link"
-                        >
-                            {$ getActionTitle('release') $}
-                        </button>
-                        <button
-                            data-ng-if="node.actions.indexOf('acquire') === -1 && node.actions.indexOf('release') === -1"
-                            class="p-table-menu__link"
-                            disabled
-                        >
-                            No owner actions available
-                        </button>
-                    </span>
                 </div>
             </td>
             <td class="p-table__col--pool p-double-row" aria-label="Pool, Note">
-                <div class="p-table-menu">
+                <div class="p-table-menu" data-ng-class="{'has-actions': !hideActions}">
                     <div class="p-double-row__rows-container">
                         <div class="p-double-row__main-row" aria-label="Pool">
                             <i class="p-icon--spinner u-animation--spin" data-ng-if="node['set-pool-transition']">Setting pool</i>
                             <span data-ng-if="node.pool.name"><a class="p-link--soft" href="#/pools" title="{$ node.pool.name $}"> {$ node.pool.name $}</a></span>
                             <span data-ng-if="!node.pool.name">-</span>
                         </div>
-                        <div class="p-double-row__muted-row" aria-label="Note" title="{$ node.description $}">
-                            <span data-ng-if="node.description">{$ node.description $}</span>
-                            <span data-ng-if="!node.description">&nbsp;</span>
+                        <button
+                            data-ng-if="node.actions.indexOf('set-pool') !== -1 && !hideActions"
+                            data-ng-click="toggleMenu(node.system_id + '-pool')"
+                            class="p-table-menu__toggle p-icon--contextual-menu--horizontal"
+                        >
+                        </button>
+                        <div data-ng-if="node.description" class="p-double-row__muted-row" aria-label="Note" title="{$ node.description $}">
+                            {$ node.description $}
                         </div>
+                        <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-pool'">
+                            <div class="p-table-menu__title">Change pool:</div>
+                            <button
+                                data-ng-repeat="pool in pools | orderBy:'name'"
+                                data-ng-if="node.pool.id !== pool.id && pools.length > 1 && node.actions.indexOf('set-pool') !== -1"
+                                data-ng-click="performAction(node, 'set-pool', { pool_id: pool.id })"
+                                class="p-table-menu__link"
+                            >
+                                {$ pool.name $}
+                            </button>
+                            <button
+                                data-ng-if="pools.length < 2 && node.actions.indexOf('set-pool') !== -1"
+                                class="p-table-menu__link"
+                                disabled
+                            >
+                                No other pools available
+                            </button>
+                        </span>
                     </div>
-                    <button
-                        data-ng-if="node.actions.indexOf('set-pool') !== -1 && !hideActions"
-                        data-ng-click="toggleMenu(node.system_id + '-pool')"
-                        class="p-table-menu__toggle p-icon--contextual-menu"
-                    >
-                    </button>
-                    <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-pool'">
-                        <div class="p-table-menu__title">Change pool:</div>
-                        <button
-                            data-ng-repeat="pool in pools | orderBy:'name'"
-                            data-ng-if="node.pool.id !== pool.id && pools.length > 1 && node.actions.indexOf('set-pool') !== -1"
-                            data-ng-click="performAction(node, 'set-pool', { pool_id: pool.id })"
-                            class="p-table-menu__link"
-                        >
-                            {$ pool.name $}
-                        </button>
-                        <button
-                            data-ng-if="pools.length < 2 && node.actions.indexOf('set-pool') !== -1"
-                            class="p-table-menu__link"
-                            disabled
-                        >
-                            No other pools available
-                        </button>
-                    </span>
                 </div>
             </td>
             <td class="p-table__col--zone p-double-row" aria-label="Zone">
-                <div class="p-table-menu">
+                <div class="p-table-menu" data-ng-class="{'has-actions': !hideActions}">
                     <div class="p-double-row__rows-container">
                         <div class="p-double-row__main-row" aria-label="Zone" title="{$ node.zone.name $}">
                             <i class="p-icon--spinner u-animation--spin" data-ng-if="node['set-zone-transition']">Setting zone</i>
                             <span data-ng-if="node.zone.name"><a class="p-link--soft" href="#/zone/{$ node.zone.id $}" title="{$ node.zone.name $}">{$ node.zone.name $}</a></span>
                             <span data-ng-if="!node.zone.name">-</span>
                         </div>
+                        <button
+                            data-ng-if="node.actions.indexOf('set-zone') !== -1 && !hideActions"
+                            data-ng-click="toggleMenu(node.system_id + '-zone')"
+                            class="p-table-menu__toggle p-icon--contextual-menu--horizontal"
+                        >
+                        </button>
                         <div class="p-double-row__muted-row" style="overflow: visible">
                             <span data-ng-if="node.spaces.length === 1">
                                 {$ node.spaces[0] $}
@@ -336,13 +348,6 @@
                                 <span class="p-tooltip__message" role="tooltip" id="{$ node.hostname $}-spaces">{$ getSpacesTooltipMessage(node.spaces) $}</span>
                             </span>
                         </div>
-                    </div>
-                    <button
-                        data-ng-if="node.actions.indexOf('set-zone') !== -1 && !hideActions"
-                        data-ng-click="toggleMenu(node.system_id + '-zone')"
-                        class="p-table-menu__toggle p-icon--contextual-menu"
-                    >
-                    </button>
                     <span class="p-table-menu__dropdown" data-ng-if="openMenu === node.system_id + '-zone'">
                         <div class="p-table-menu__title">Change AZ:</div>
                         <button
@@ -361,6 +366,7 @@
                             No other zones available
                         </button>
                     </span>
+                    </div>
                 </div>
             </td>
             <td class="p-table__col--fabric p-double-row" aria-label="Fabric, VLAN" title="{$ node.fabric.name $}">
@@ -374,8 +380,8 @@
                     </div>
                 </div>
             </td>
-            <td class="p-table__col--cores p-table--action-cell u-align--right p-double-row" aria-label="CPU, Architecture">
-                <div class="p-double-row__rows-container">
+            <td class="p-table__col--cores p-table--action-cell p-double-row" aria-label="CPU, Architecture">
+                <div class="p-double-row__rows-container u-align--right">
                     <div class="p-double-row__main-row" aria-label="CPU" style="overflow: visible"> <!-- overflow override so tooltip is visible -->
                         <span class="p-tooltip p-tooltip--left">
                             <span data-maas-script-status="script-status" data-script-status="node.cpu_test_status" data-ng-if="node.cpu_test_status !== -1 && node.cpu_test_status !== 2" aria-describedby="node-cpu-tooltip-{$ node.fqdn $}"></span>
